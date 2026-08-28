@@ -1,0 +1,24 @@
+Estruturas de Pastas:Frontend (ex: React)
+bash
+/src
+/assets         -> Imagens, fontes, ícones
+/components     -> Componentes reutilizáveis
+/pages          -> Páginas (Home, Login, etc)
+/styles         -> Estilos globais e temas
+/services       -> Conexão com APIs
+/hooks          -> Hooks personalizados
+/utils          -> Funções auxiliares
+Backend (ex: Node.js)
+bash
+/src
+/controllers    -> Lógica de cada rota
+/models         -> Modelos de dados (ex: MongoDB)
+/routes         -> Arquivos de rotas da aplicação
+/services       -> Regras de negócio (auth, email, etc)
+/middlewares    -> Interceptações (ex: auth)
+/config         -> Configurações (banco, ambiente)
+/utils          -> Helpers diversos
+Você pode organizar em duas pastas principais:
+bash
+/frontend
+/backend
