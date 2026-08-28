@@ -3,26 +3,20 @@
 require_once "../config/conexao.php";
 
 $nome = $_POST["nome"] ?? '';
-$email = $_POST["email"] ?? '';
+$categoria = $_POST["categoria"] ?? '';
 $telefone = $_POST["telefone"] ?? '';
 $cep = $_POST["cep"] ?? '';
 $rua = $_POST["rua"] ?? '';
 $numero = $_POST["numero"] ?? '';
 $complemento = $_POST["complemento"] ?? '';
 
-if (
-    empty($nome) ||
-    empty($email) ||
-    empty($telefone) ||
-    empty($cep) ||
-    empty($rua) ||
-    empty($numero)
-) {
+if (empty($nome) || empty($categoria) || empty($telefone) || empty($endereco)) {
+
     echo "Preencha todos os campos obrigatórios!";
     exit;
 }
 
-$sql = "INSERT INTO cliente (nome, email, telefone, cep, rua, numero, complemento)
+$$sql = "INSERT INTO restaurante (nome, categoria, telefone, cep, rua, numero, complemento)
         VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conexao->prepare($sql);
@@ -30,7 +24,7 @@ $stmt = $conexao->prepare($sql);
 $stmt->bind_param(
     "sssssss",
     $nome,
-    $email,
+    $categoria,
     $telefone,
     $cep,
     $rua,
@@ -39,9 +33,13 @@ $stmt->bind_param(
 );
 
 if ($stmt->execute()) {
-    echo "Cliente cadastrado com sucesso!";
+
+    header("Location: ../pages/index.php");
+    exit;
+
 } else {
-    echo "Erro ao cadastrar: " . $stmt->error;
+
+    echo "Erro ao cadastrar restaurante: " . $stmt->error;
 }
 
 $stmt->close();
